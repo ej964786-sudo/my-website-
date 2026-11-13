@@ -5,419 +5,172 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GOD'S CHILD | Faith-Inspired Streetwear</title>
   <style>
-    :root {
-      --bg: #ffffff;
-      --surface: #f6f6f6;
-      --text: #111111;
-      --muted: #666666;
-      --border: #e5e5e5;
-      --accent: #111111;
-      --badge: #1a1a1a;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
     html { scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--text); line-height: 1.5; }
-
-    /* Announcement Bar */
-    .announcement-bar {
-      background: var(--text);
-      color: #fff;
-      text-align: center;
-      font-size: 0.8rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 10px 16px;
-      font-weight: 600;
-    }
-
-    /* Sticky Header */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--border);
-      padding: 16px 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 1.35rem;
-      font-weight: 900;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      text-decoration: none;
-      color: var(--text);
-    }
-
-    nav { display: flex; gap: 28px; }
-    nav a {
-      text-decoration: none;
-      color: var(--text);
-      font-size: 0.88rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-    nav a:hover { opacity: 0.6; }
-
-    .header-actions { display: flex; align-items: center; gap: 18px; }
-    .cart-btn {
-      background: none;
-      border: 1px solid var(--text);
-      padding: 8px 16px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: 0.2s;
-    }
-    .cart-btn:hover { background: var(--text); color: #fff; }
-
-    /* Hero Banner */
-    .hero {
-      position: relative;
-      height: 82vh;
-      min-height: 520px;
-      background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.55)),
-                  url('https://unsplash.com') center/cover no-repeat;
-      display: flex;
-      align-items: center;
-      padding: 0 6%;
-      color: #fff;
-    }
-
-    .hero-content { max-width: 620px; }
-    .hero-tag {
-      font-size: 0.82rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      margin-bottom: 14px;
-      display: block;
-      opacity: 0.9;
-    }
-    .hero h1 {
-      font-size: clamp(2.4rem, 5vw, 4rem);
-      font-weight: 900;
-      line-height: 1.08;
-      letter-spacing: -0.02em;
-      margin-bottom: 18px;
-      text-transform: uppercase;
-    }
-    .hero p {
-      font-size: 1.05rem;
-      margin-bottom: 28px;
-      opacity: 0.92;
-    }
-    .btn-primary {
-      display: inline-block;
-      background: #fff;
-      color: #111;
-      padding: 14px 32px;
-      font-size: 0.88rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-    .btn-primary:hover { background: #e5e5e5; }
-
-    /* Section Containers */
-    section { padding: 72px 5%; }
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin-bottom: 36px;
-    }
-    .section-title {
-      font-size: 1.75rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-
-    /* Filter Tabs */
-    .filters { display: flex; gap: 10px; flex-wrap: wrap; }
-    .filter-btn {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 8px 18px;
-      font-size: 0.82rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-    .filter-btn.active, .filter-btn:hover {
-      background: var(--text);
-      color: #fff;
-      border-color: var(--text);
-    }
-
-    /* Product Grid */
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-      gap: 32px 24px;
-    }
-
-    .product-card {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .product-img-wrap {
-      position: relative;
-      background: var(--surface);
-      aspect-ratio: 4 / 5;
-      overflow: hidden;
-      margin-bottom: 14px;
-    }
-
-    .product-img-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.4s ease;
-    }
-    .product-card:hover .product-img-wrap img { transform: scale(1.04); }
-
-    .badge {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      background: var(--badge);
-      color: #fff;
-      font-size: 0.7rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 5px 10px;
-    }
-
-    .product-title {
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-    .product-meta {
-      font-size: 0.82rem;
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
-    .product-price {
-      font-size: 0.98rem;
-      font-weight: 800;
-      margin-bottom: 12px;
-    }
-
-    /* Size Selector */
-    .size-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-    }
-    .sizes { display: flex; gap: 6px; }
-    .size-pill {
-      border: 1px solid var(--border);
-      background: #fff;
-      width: 34px;
-      height: 32px;
-      font-size: 0.78rem;
-      font-weight: 700;
-      cursor: pointer;
-    }
-    .size-pill.selected {
-      background: var(--text);
-      color: #fff;
-      border-color: var(--text);
-    }
-
-    .size-guide-link {
-      font-size: 0.75rem;
-      color: var(--muted);
-      text-decoration: underline;
-      cursor: pointer;
-      background: none;
-      border: none;
-    }
-
-    .add-bag-btn {
-      width: 100%;
-      background: var(--text);
-      color: #fff;
-      border: none;
-      padding: 13px;
-      font-size: 0.82rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-    .add-bag-btn:hover { background: #333; }
-
-    /* Brand Mission / About Split */
-    .mission-section {
-      background: var(--surface);
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 48px;
-      align-items: center;
-    }
-    .mission-img img {
-      width: 100%;
-      aspect-ratio: 4/3;
-      object-fit: cover;
-    }
-    .mission-text h2 {
-      font-size: 2rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-    .mission-text p {
-      color: #333;
-      margin-bottom: 16px;
-      font-size: 1rem;
-    }
-    .scripture-box {
-      border-left: 3px solid var(--text);
-      padding-left: 16px;
-      margin-top: 24px;
-      font-style: italic;
-      font-weight: 600;
-    }
-
-    /* Slide-out Cart Drawer */
-    .overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.5);
-      display: none;
-      z-index: 200;
-    }
+    body { background: #fff; color: #111; line-height: 1.5; }
+    .bar { background: #111; color: #fff; text-align: center; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; padding: 10px; font-weight: 600; }
+    header { position: sticky; top: 0; z-index: 100; background: #fff; border-bottom: 1px solid #e5e5e5; padding: 16px 5%; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 20px; font-weight: 900; letter-spacing: 2px; text-decoration: none; color: #111; }
+    nav { display: flex; gap: 24px; }
+    nav a { text-decoration: none; color: #111; font-size: 13px; font-weight: 700; text-transform: uppercase; }
+    .cart-btn { background: #111; color: #fff; border: none; padding: 9px 16px; font-size: 12px; font-weight: 700; text-transform: uppercase; cursor: pointer; }
+    .hero { height: 75vh; min-height: 460px; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('https://unsplash.com') center/cover; display: flex; align-items: center; padding: 0 6%; color: #fff; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3.6rem); font-weight: 900; line-height: 1.1; margin: 12px 0 16px; text-transform: uppercase; max-width: 600px; }
+    .hero p { max-width: 500px; margin-bottom: 24px; opacity: 0.9; }
+    .btn { display: inline-block; background: #fff; color: #111; padding: 13px 28px; font-size: 13px; font-weight: 800; text-transform: uppercase; text-decoration: none; border: none; cursor: pointer; }
+    section { padding: 64px 5%; }
+    .top-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 32px; }
+    .filters { display: flex; gap: 8px; flex-wrap: wrap; }
+    .f-btn { background: #f4f4f4; border: 1px solid #ddd; padding: 8px 16px; font-size: 12px; font-weight: 700; text-transform: uppercase; cursor: pointer; }
+    .f-btn.active { background: #111; color: #fff; border-color: #111; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 28px 20px; }
+    .card-img { position: relative; background: #f5f5f5; aspect-ratio: 4/5; overflow: hidden; margin-bottom: 12px; }
+    .card-img img { width: 100%; height: 100%; object-fit: cover; }
+    .badge { position: absolute; top: 10px; left: 10px; background: #111; color: #fff; font-size: 11px; font-weight: 800; padding: 4px 8px; text-transform: uppercase; }
+    .sizes { display: flex; gap: 6px; margin: 10px 0 12px; align-items: center; }
+    .s-btn { border: 1px solid #ccc; background: #fff; min-width: 32px; height: 30px; padding: 0 6px; font-size: 12px; font-weight: 700; cursor: pointer; }
+    .s-btn.sel { background: #111; color: #fff; border-color: #111; }
+    .add-btn { width: 100%; background: #111; color: #fff; border: none; padding: 12px; font-size: 12px; font-weight: 800; text-transform: uppercase; cursor: pointer; }
+    .mission { background: #f6f6f6; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; align-items: center; }
+    .mission img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+    .quote { border-left: 3px solid #111; padding-left: 14px; margin-top: 18px; font-style: italic; font-weight: 600; }
+    footer { background: #111; color: #bbb; padding: 48px 5% 24px; font-size: 14px; }
+    .f-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 28px; margin-bottom: 32px; }
+    footer h4 { color: #fff; text-transform: uppercase; margin-bottom: 10px; font-size: 13px; }
+    footer a { color: #bbb; text-decoration: none; display: block; margin-bottom: 6px; }
+    .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); display: none; z-index: 200; }
     .overlay.open { display: block; }
-
-    .cart-drawer {
-      position: fixed;
-      top: 0;
-      right: -420px;
-      width: 100%;
-      max-width: 400px;
-      height: 100vh;
-      background: #fff;
-      z-index: 201;
-      display: flex;
-      flex-direction: column;
-      transition: right 0.3s ease;
-    }
-    .cart-drawer.open { right: 0; }
-
-    .drawer-header {
-      padding: 20px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .drawer-header h3 {
-      font-size: 1.05rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-    .close-btn {
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-
-    .cart-items {
-      flex: 1;
-      overflow-y: auto;
-      padding: 20px;
-    }
-    .cart-item {
-      display: flex;
-      gap: 14px;
-      padding-bottom: 16px;
-      margin-bottom: 16px;
-      border-bottom: 1px solid var(--border);
-    }
-    .cart-item img {
-      width: 70px;
-      height: 85px;
-      object-fit: cover;
-      background: var(--surface);
-    }
-    .cart-item-info { flex: 1; }
-    .cart-item-title { font-weight: 700; font-size: 0.92rem; }
-    .cart-item-sub { font-size: 0.8rem; color: var(--muted); margin: 3px 0 8px; }
-    .qty-controls { display: flex; align-items: center; gap: 10px; }
-    .qty-btn {
-      width: 24px;
-      height: 24px;
-      border: 1px solid var(--border);
-      background: #fff;
-      cursor: pointer;
-      font-weight: 700;
-    }
-
-    .drawer-footer {
-      padding: 20px;
-      border-top: 1px solid var(--border);
-      background: var(--surface);
-    }
-    .subtotal-row {
-      display: flex;
-      justify-content: space-between;
-      font-weight: 800;
-      font-size: 1.05rem;
-      margin-bottom: 14px;
-    }
-
-    /* Modals (Size Guide & Checkout) */
-    .modal {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: #fff;
-      padding: 28px;
-      width: 92%;
-      max-width: 460px;
-      z-index: 300;
-      display: none;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-    }
+    .drawer { position: fixed; top: 0; right: -400px; width: 100%; max-width: 380px; height: 100vh; background: #fff; z-index: 201; display: flex; flex-direction: column; transition: 0.3s; }
+    .drawer.open { right: 0; }
+    .d-head, .d-foot { padding: 18px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+    .d-foot { border-top: 1px solid #eee; border-bottom: none; flex-direction: column; align-items: stretch; gap: 12px; background: #f9f9f9; }
+    .d-body { flex: 1; overflow-y: auto; padding: 18px; }
+    .c-item { display: flex; gap: 12px; margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid #eee; }
+    .c-item img { width: 60px; height: 75px; object-fit: cover; }
+    .modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #fff; padding: 24px; width: 92%; max-width: 420px; z-index: 300; display: none; }
     .modal.open { display: block; }
-    .modal h3 {
-      font-size: 1.2rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      margin-bottom: 14px;
+    .modal input, .modal select { width: 100%; padding: 10px; margin: 6px 0 12px; border: 1px solid #ccc; }
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 13px; }
+    th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+    @media (max-width: 700px) { nav { display: none; } }
+  </style>
+</head>
+<body>
+  <div class="bar">Faith • Growth • Purpose — Free Delivery in Kigali Over 50,000 RWF</div>
+  <header>
+    <a href="#" class="logo">GOD'S CHILD</a>
+    <nav>
+      <a href="#shop">Shop</a>
+      <a href="#story">Our Story</a>
+      <a href="javascript:void(0)" onclick="openModal('size-modal')">Size Guide</a>
+    </nav>
+    <button class="cart-btn" onclick="toggleCart(true)">Bag (<span id="count">0</span>)</button>
+  </header>
+
+  <div class="hero">
+    <div>
+      <span style="letter-spacing:2px; text-transform:uppercase; font-size:12px;">2026 Collection</span>
+      <h1>Wear Your Faith. Walk In Purpose.</h1>
+      <p>Heavyweight streetwear crafted to inspire positivity, spiritual growth, and confidence every day.</p>
+      <a href="#shop" class="btn">Shop Collection</a>
+    </div>
+  </div>
+
+  <section id="shop">
+    <div class="top-row">
+      <h2 style="text-transform:uppercase; font-weight:900;">Latest Drops</h2>
+      <div class="filters">
+        <button class="f-btn active" onclick="filterCat('all', this)">All</button>
+        <button class="f-btn" onclick="filterCat('tees', this)">T-Shirts</button>
+        <button class="f-btn" onclick="filterCat('hoodies', this)">Hoodies</button>
+        <button class="f-btn" onclick="filterCat('accessories', this)">Accessories</button>
+      </div>
+    </div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section id="story" class="mission">
+    <img src="https://unsplash.com" alt="Apparel" />
+    <div>
+      <h2 style="text-transform:uppercase; font-weight:900; margin-bottom:12px;">More Than Clothing</h2>
+      <p>Founded by Emmanuel Johnson, <strong>God's Child</strong> started with a mission to motivate people, spread positivity, and help others grow spiritually and mentally.</p>
+      <div class="quote">"Trust in the Lord with all your heart." — Proverbs 3:5</div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="f-grid">
+      <div><h4>GOD'S CHILD</h4><p>Faith • Growth • Purpose.</p></div>
+      <div><h4>Shop</h4><a href="#shop">T-Shirts</a><a href="#shop">Hoodies</a><a href="#shop">Accessories</a></div>
+      <div><h4>Help</h4><a href="javascript:void(0)" onclick="openModal('size-modal')">Size Chart</a><a href="#story">Delivery Info</a></div>
+    </div>
+    <div style="text-align:center; border-top:1px solid #222; padding-top:16px;">© 2026 Emmanuel Johnson | God's Child Apparel</div>
+  </footer>
+
+  <div class="overlay" id="overlay" onclick="closeAll()"></div>
+  <div class="drawer" id="drawer">
+    <div class="d-head"><strong>YOUR BAG</strong><button onclick="toggleCart(false)" style="border:none;background:none;font-size:20px;cursor:pointer;">&times;</button></div>
+    <div class="d-body" id="bag-items"></div>
+    <div class="d-foot">
+      <div style="display:flex;justify-content:space-between;font-weight:800;"><span>Subtotal</span><span id="subtotal">0 RWF</span></div>
+      <button class="add-btn" onclick="openCheckout()">Checkout</button>
+    </div>
+  </div>
+
+  <div class="modal" id="size-modal">
+    <div style="display:flex;justify-content:space-between;"><strong>SIZE CHART (CM)</strong><button onclick="closeAll()" style="border:none;background:none;font-size:20px;cursor:pointer;">&times;</button></div>
+    <table><tr><th>Size</th><th>Chest</th><th>Length</th></tr><tr><td>S</td><td>54</td><td>70</td></tr><tr><td>M</td><td>57</td><td>72</td></tr><tr><td>L</td><td>60</td><td>74</td></tr><tr><td>XL</td><td>63</td><td>76</td></tr></table>
+  </div>
+
+  <div class="modal" id="checkout-modal">
+    <div style="display:flex;justify-content:space-between;margin-bottom:10px;"><strong>COMPLETE ORDER</strong><button onclick="closeAll()" style="border:none;background:none;font-size:20px;cursor:pointer;">&times;</button></div>
+    <form onsubmit="sendOrder(event)">
+      <input type="text" id="cname" required placeholder="Full Name" />
+      <input type="tel" id="cphone" required placeholder="Phone Number (WhatsApp / MoMo)" />
+      <input type="text" id="caddr" required placeholder="Delivery Location (e.g. Kigali, Gasabo)" />
+      <select id="cpay"><option>MTN Mobile Money / Airtel Money</option><option>Cash on Delivery</option></select>
+      <button type="submit" class="add-btn">Send Order on WhatsApp</button>
+    </form>
+  </div>
+  <script>
+    const WHATSAPP = "250780000000";
+    const products = [
+      { id: 1, name: "Proverbs 3:5 Heavyweight Tee", cat: "tees", price: 18000, badge: "Bestseller", desc: "240 GSM Heavy Cotton", img: "https://unsplash.com", sizes: ["S","M","L","XL"] },
+      { id: 2, name: "God's Child Signature Hoodie", cat: "hoodies", price: 35000, badge: "New", desc: "Fleece Lined Street Fit", img: "https://unsplash.com", sizes: ["S","M","L","XL"] },
+      { id: 3, name: "Walk In Purpose Tee", cat: "tees", price: 20000, badge: "", desc: "100% Organic Washed Black", img: "https://unsplash.com", sizes: ["S","M","L","XL"] },
+      { id: 4, name: "Faith Over Fear Cap", cat: "accessories", price: 12000, badge: "Limited", desc: "Adjustable Cotton Cap", img: "https://unsplash.com", sizes: ["One Size"] }
+    ];
+    let selSize = {}, cart = [], activeCat = "all";
+
+    function render() {
+      const g = document.getElementById("grid"); g.innerHTML = "";
+      products.filter(p => activeCat === "all" || p.cat === activeCat).forEach(p => {
+        if (!selSize[p.id]) selSize[p.id] = p.sizes;
+        const btns = p.sizes.map(s => `<button class="s-btn ${selSize[p.id]===s?'sel':''}" onclick="pickSize(${p.id},'${s}')">${s}</button>`).join("");
+        g.innerHTML += `<div><div class="card-img">${p.badge?`<span class="badge">${p.badge}</span>`:""}<img src="${p.img}"></div><strong>${p.name}</strong><div style="font-size:12px;color:#666;">${p.desc}</div><div style="font-weight:800;margin-top:4px;">${p.price.toLocaleString()} RWF</div><div class="sizes">${btns}</div><button class="add-btn" onclick="add(${p.id})">Add to Bag</button></div>`;
+      });
     }
+    function filterCat(c, el) { activeCat = c; document.querySelectorAll(".f-btn").forEach(b=>b.classList.remove("active")); el.classList.add("active"); render(); }
+    function pickSize(id, s) { selSize[id] = s; render(); }
+    function add(id) { const p = products.find(x=>x.id===id), s = selSize[id], ex = cart.find(x=>x.id===id&&x.s===s); ex ? ex.q++ : cart.push({...p, s, q:1}); updateBag(); toggleCart(true); }
+    function chg(i, d) { cart[i].q += d; if(cart[i].q<=0) cart.splice(i,1); updateBag(); }
+    function updateBag() {
+      document.getElementById("count").textContent = cart.reduce((a,b)=>a+b.q,0);
+      document.getElementById("subtotal").textContent = cart.reduce((a,b)=>a+b.price*b.q,0).toLocaleString() + " RWF";
+      document.getElementById("bag-items").innerHTML = cart.length ? cart.map((x,i)=>`<div class="c-item"><img src="${x.img}"><div style="flex:1"><strong>${x.name}</strong><div style="font-size:12px;color:#666">Size: ${x.s} • ${x.price.toLocaleString()} RWF</div><div style="margin-top:6px"><button onclick="chg(${i},-1)" style="width:24px">-</button> ${x.q} <button onclick="chg(${i},1)" style="width:24px">+</button></div></div></div>`).join("") : "<p style='color:#666'>Your bag is empty.</p>";
+    }
+    function toggleCart(o) { document.getElementById("drawer").classList.toggle("open",o); document.getElementById("overlay").classList.toggle("open",o); }
+    function openModal(id) { closeAll(); document.getElementById(id).classList.add("open"); document.getElementById("overlay").classList.add("open"); }
+    function openCheckout() { if(!cart.length) return alert("Bag is empty"); openModal("checkout-modal"); }
+    function closeAll() { document.querySelectorAll(".drawer,.modal,.overlay").forEach(el=>el.classList.remove("open")); }
+    function sendOrder(e) {
+      e.preventDefault();
+      const lines = cart.map(x=>`• ${x.name} (${x.s}) x${x.q}`).join("%0A");
+      const tot = cart.reduce((a,b)=>a+b.price*b.q,0).toLocaleString();
+      const msg = `*NEW ORDER - GOD'S CHILD*%0AName: ${cname.value}%0APhone: ${cphone.value}%0ALocation: ${caddr.value}%0APayment: ${cpay.value}%0A%0A${lines}%0A%0ATotal: ${tot} RWF`;
+      window.open(`https://wa.me{WHATSAPP}?text=${msg}`, "_blank");
+    }
+    render(); updateBag();
+  </script>
+</body>
+</html>
